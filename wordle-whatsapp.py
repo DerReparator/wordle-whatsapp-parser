@@ -11,10 +11,12 @@ import argparse
 import os
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
-import zipfile
+from typing import List
 
 from inputparser.WhatsAppMessageZipParser import WhatsAppMessageZipParser
 from WordleStringParser import parseFromSource
+from outputsinks.GraphicalOutputs import AverageScore
+from outputsinks.WordleOutputSink import WordleOutput
 
 ZIP_ARGUMENT_NAME: str = 'zipPathInput'
 
@@ -31,6 +33,10 @@ def get_file_path_from_user() -> str:
 parser = argparse.ArgumentParser(description="This is the Wordle WhatsApp Parser.")
 parser.add_argument('--input', dest=ZIP_ARGUMENT_NAME, type=file_path, help='The WhatsApp Chat *.zip file')
 
+outputSinks: List[WordleOutput] = [
+    AverageScore()
+]
+
 if __name__=='__main__':
     print("This is the Wordle WhatsApp Parser.")
     parsed_args = parser.parse_args()
@@ -44,5 +50,10 @@ if __name__=='__main__':
 
     whatsAppParser = WhatsAppMessageZipParser(zipFilePath)
     
-    for wordle in parseFromSource(whatsAppParser):
-        print(wordle, end='\n')
+    print("Gathering results... ")
+    results = list(parseFromSource(whatsAppParser))
+    print(f"Done! Got {len(results)} results.")
+    print("Outputting results... ")
+    for sink in outputSinks:
+        sink.output_results(results)
+    print("Done!")

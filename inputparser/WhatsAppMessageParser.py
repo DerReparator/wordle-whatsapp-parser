@@ -39,7 +39,7 @@ class WhatsAppMessageParser(MessageParserBase):
         match = self.REGEX_MSG_INFO.match(newMsgLine)
 
         if match is None:
-            return Message(message=newMsgLine)
+            return None
 
         dateStamp: date = None
         timeStamp: time = None
@@ -60,22 +60,30 @@ class WhatsAppMessageParser(MessageParserBase):
                 msg = matchedGroups[self.REGEX_GROUP_MSG]
 
         # Check if ALL values are NOT None anymore
-        if not any(map(lambda x: x is None, (dateStamp, timeStamp, name, msg))):
+        if all(map(lambda x: x is None, (dateStamp, timeStamp, name, msg))):
+            return None
+        else:
             return Message(
                 datestamp=dateStamp,
                 timestamp=timeStamp,
                 player=name,
                 message=msg
             )
-        else:
-            return Message(message=newMsgLine)
         
     def build_message(self, metaObj: Message, messageText: List[str]) -> Message:
         if metaObj is None:
             print("Internal error: message building needs non-null meta object. Skipping...")
+            print("Message was:", ''.join(messageText).strip())
             return None
         metaObj.message = ''.join(messageText).strip()
         return metaObj
+
+    def remove_unwandted_chars(self, line: str) -> str:
+        '''Retrieve characters that can negatively influence parsing.
+        
+        Remember to keep the message as true to the original as possible!
+        '''
+        return line.replace('\u200e', '')
 
     def retrieve_snippets(self) -> Generator[Message, None, None]:
         '''This method parses lines for the messages and their meta-information.'''
