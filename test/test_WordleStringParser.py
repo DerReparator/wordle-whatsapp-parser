@@ -52,6 +52,28 @@ wordle 235 X/6
 asdfasfasdfasdfhhbzn
 '''
 
+WOERDL_MESSAGE_VALID = '''[13.04.22, 13:25:27] bla bla: Wördl 298 6/6 🔥1
+
+⬛⬛⬛⬛⬛
+⬛🟨⬛🟨⬛
+⬛⬛⬛🟩🟩
+⬛🟨⬛⬛🟨
+🟩🟩⬛🟩🟩
+🟩🟩🟩🟩🟩
+
+wordle.at
+'''
+
+WOERDL_MESSAGE_VALID_DAYINDEX: int = 298
+WOERDL_MESSAGE_VALID_STEPS: int = 6
+WOERDL_MESSAGE_VALID_SOLUTION: str = '''⬛⬛⬛⬛⬛
+⬛🟨⬛🟨⬛
+⬛⬛⬛🟩🟩
+⬛🟨⬛⬛🟨
+🟩🟩⬛🟩🟩
+🟩🟩🟩🟩🟩'''
+WOERDL_MESSAGE_VALID_STREAK: int = 1
+
 class Test_ParseMessage_IsNone(unittest.TestCase):
     '''All cases where "None" should be returned.'''
     def test_ofEmpty(self):
@@ -108,6 +130,33 @@ class Test_ParseMessage_InputNameIsInOutput(unittest.TestCase):
         self.assertIsNotNone(ret)
         parsedName = ret.player
         self.assertEqual(self.name, parsedName)
+
+class Test_ParseWoerdl_IsParsedSuccessfully(unittest.TestCase):
+    '''Test input for successful parsing without focusing on any particular parsed value.'''
+    def test_BasicCase(self):
+        ret: WordleMetadata = WordleStringParser.parseMessage(WOERDL_MESSAGE_VALID)
+        self.assertIsNotNone(ret)
+
+class Test_ParseWoerdl_CorrectSolution(unittest.TestCase):
+    def test_validMessage_dayIndexCorrect(self):
+        ret: WordleMetadata = WordleStringParser.parseMessage(WOERDL_MESSAGE_VALID)
+        self.assertIsNotNone(ret)
+        self.assertEqual(WOERDL_MESSAGE_VALID_DAYINDEX, ret.day_index)
+
+    def test_validMessage_solutionLengthCorrect(self):
+        ret: WordleMetadata = WordleStringParser.parseMessage(WOERDL_MESSAGE_VALID)
+        self.assertIsNotNone(ret)
+        self.assertEqual(WOERDL_MESSAGE_VALID_STEPS, ret.steps_to_solution)
+
+    def test_validMessage_solutionCorrect(self):
+        ret: WordleMetadata = WordleStringParser.parseMessage(WOERDL_MESSAGE_VALID)
+        self.assertIsNotNone(ret)
+        self.assertEqual(WOERDL_MESSAGE_VALID_SOLUTION, ret.solution)
+
+    def test_validMessage_streakCorrect(self):
+        ret: WordleMetadata = WordleStringParser.parseMessage(WOERDL_MESSAGE_VALID)
+        self.assertIsNotNone(ret)
+        self.assertEqual(WOERDL_MESSAGE_VALID_STREAK, ret.streak)
 
 if __name__=='__main__':
     unittest.main()
