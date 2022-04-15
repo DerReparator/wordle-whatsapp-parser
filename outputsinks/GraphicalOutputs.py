@@ -1,3 +1,5 @@
+'''This module gathers all graphical output possibilities.'''
+
 from typing import Dict, List
 from collections import defaultdict
 from WordleStringParser import WordleMetadata
@@ -6,6 +8,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 class AverageScore(WordleOutput):
+    '''Output that displays a diagram which shows the average number of tries
+    for each player.'''
     
     def output_results(self, playedWordles: List[WordleMetadata]) -> None:
         data: Dict[str, int] = defaultdict(lambda: 0)
