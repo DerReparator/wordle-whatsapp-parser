@@ -4,8 +4,10 @@ parsing Wordle metadata from strings.
 '''
 from dataclasses import dataclass
 from tokenize import group
-from typing import Dict, Optional, Union
+from typing import Dict, List, Optional, Union
 import re
+
+from inputparser.MessageParserBase import MessageParserBase
 
 PLAYER_UNKNOWN: str = "unknown"
 
@@ -26,6 +28,9 @@ class WordleMetadata:
 
     def is_failed_attempt(self) -> bool:
         return self.steps_to_solution == 'X'
+
+def parseFromSource(source: MessageParserBase) -> List[Optional[WordleMetadata]]:
+    return [wordle for msg in source.retrieve_snippets() if (wordle := parseMessage(msg)) is not None]
 
 def parseMessage(msg: str, playerName:str = PLAYER_UNKNOWN) -> Optional[WordleMetadata]:
     day_index = None
