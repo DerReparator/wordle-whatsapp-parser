@@ -1,3 +1,5 @@
+import datetime
+from inputparser.MessageMetadata import Message
 from inputparser.WhatsAppMessageZipParser import WhatsAppMessageZipParser
 import unittest
 import os
@@ -12,8 +14,10 @@ class Test_RetrieveSnippets_FindsAllMessages(unittest.TestCase):
 class Test_RetrieveSnippets_CorrectContent(unittest.TestCase):
     def test_RetrieveSnippets_CorrectMessageContent(self):
         parser = WhatsAppMessageZipParser(FILE_WITH_2_MESSAGES)
-        expected_res = ['''baz bar: Kennst des
- TELNR ?''', 'bar foo: Nö']
+        expected_res = [\
+            Message(datestamp=datetime.date(2022, 1, 28), timestamp=datetime.time(10, 54, 4), player='baz bar', message='baz bar: Kennst des\n TELNR ?'),
+            Message(datestamp=datetime.date(2022, 1, 28), timestamp=datetime.time(11, 0, 13), player='bar foo', message='bar foo: Nö')\
+                ]
         self.assertEqual(expected_res, list(parser.retrieve_snippets()))
 
 if __name__=='__main__':

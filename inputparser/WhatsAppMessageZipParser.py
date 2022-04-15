@@ -1,6 +1,7 @@
 '''Parser for getting messages out of the WhatsApp Chat Backup ZIP file.
 '''
 from typing import Generator
+from inputparser.MessageMetadata import Message
 from inputparser.WhatsAppMessageParser import WhatsAppMessageParser
 from inputparser.MessageParserBase import MessageParserBase
 import os, shutil
@@ -40,7 +41,7 @@ class WhatsAppMessageZipParser(MessageParserBase):
             shutil.rmtree(toBeRemoved)
             print(f"Successfully removed temp folder {toBeRemoved}")
 
-    def retrieve_snippets(self) -> Generator[str, None, None]:
+    def retrieve_snippets(self) -> Generator[Message, None, None]:
         chatTxtPath: str = self.__unzip_Chat_zip()
         
         parser = WhatsAppMessageParser(chatTxtPath)

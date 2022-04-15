@@ -11,7 +11,7 @@ Wordle 223 6/6
 🟩🟩🟩🟩🟩
 [28.01.22, 10:54:04] baz bar: Kennst des TELNR ?
 [28.01.22, 11:00:13] bar foo: Nö
-[28.01.22, 11:17:15] baz bar: https://www.powerlanguage.co.uk/wordle/
+[28.01.22, 11:17:15] baz bar: bars://www.powerlanguage.co.uk/wordle/
 [28.01.22, 11:34:11] foo bar: Wordle 223 3/6
 
 ⬛⬛⬛⬛⬛
@@ -29,7 +29,7 @@ Wordle 223 6/6
 [28.01.22, 13:49:53] baz bar: Aeros
 [28.01.22, 14:44:49] bar foo: Ich mach das zum ersten Mal
 ‎[28.01.22, 17:47:45] baz bar: ‎Bild weggelassen
-[28.01.22, 18:28:52] baz bar: https://youtu.be/_2SDlpcXymU
+[28.01.22, 18:28:52] baz bar: bars://youtu.be/_2SDlpcXymU
 [28.01.22, 19:33:06] bar foo: 😂😂😂
 [29.01.22, 08:36:02] foo bar: Wordle 224 6/6
 
@@ -404,8 +404,6 @@ Deswegen ging bisher die erste Stunde bis 9.05 Uhr und alle drauffolgenden Stund
 [11.02.22, 13:03:51] baz bar: Als ob
 [11.02.22, 14:32:05] baz bar: TELNR wie geht‘s mit der Suche nach nem Handy voran?
 [11.02.22, 14:32:22] bar foo: iPhones sind zu teuer :(
-[11.02.22, 19:42:46] bar foo: Wo is die Mama angekommen?
-[11.02.22, 20:22:06] baz bar: Beim Wellnes-WE mitm Pap 😁
 [11.02.22, 20:22:45] bar foo: Merci😇
 [12.02.22, 12:35:52] foo bar: Worlde 238 X/6
 bin so schlecht zur Zeit
@@ -526,7 +524,7 @@ Wordle 242 6/6
 [16.02.22, 21:23:56] foo bar: #Worldle #26 2/6
 🟩🟩🟨⬛⬛
 🟩🟩🟩🟩🟩
-https://worldle.teuteuf.fr
+bars://worldle.teuteuf.fr
 [16.02.22, 21:24:04] foo bar: des is genau mein ding
 [16.02.22, 21:37:40] bar foo: Kanns iwie nicht shareb
 [16.02.22, 21:37:42] bar foo: n
@@ -543,7 +541,7 @@ https://worldle.teuteuf.fr
 [16.02.22, 21:46:24] baz bar: Hab den Franzakken-Link aber auch net angeklickert
 [17.02.22, 08:43:23] bar foo: #Worldle #27 1/6
 🟩🟩🟩🟩🟩
-https://worldle.teuteuf.fr
+bars://worldle.teuteuf.fr
 [17.02.22, 08:46:06] bar foo: Wordle 243 6/6
 
 🟨🟨⬜⬜🟨
@@ -574,7 +572,7 @@ Wordle 243 4/6
 🟩🟩🟨⬛⬛
 🟩🟩⬛⬛⬛
 🟩🟩🟩🟩🟩
-https://worldle.teuteuf.fr
+bars://worldle.teuteuf.fr
 [17.02.22, 14:45:31] foo bar: Bei uns ist grad eif die Mikrowelle angegangen im Q-Zimmer und dann hat es angefangen verbrannt zu stinken und dann is sie wieder aisgegangen, es hat sie aber halt niemand angemacht 😂
 ‎[17.02.22, 14:46:24] baz bar: ‎Sticker weggelassen
 [18.02.22, 07:16:39] foo bar: Wordle 244 6/6
@@ -749,7 +747,7 @@ Wordle 249 3/6
 ⬛🟨⬛🟨⬛
 🟩🟩🟩🟩🟩
 [23.02.22, 19:09:26] bar foo: I... understand... nothing
-https://youtube.com/shorts/vkdi1kOfejo?feature=share
+bars://youtube.com/shorts/vkdi1kOfejo?feature=share
 [24.02.22, 07:50:06] foo bar: Wordle 250 5/6
 
 ⬛⬛⬛⬛🟩
@@ -867,7 +865,7 @@ wtf
 [28.02.22, 06:43:41] bar foo: 🥲
 [28.02.22, 08:07:50] foo bar: #Worldle #38 1/6 (100%)
 🟩🟩🟩🟩🟩🎉
-https://worldle.teuteuf.fr
+bars://worldle.teuteuf.fr
 [28.02.22, 08:08:35] foo bar: Wordle 254 2/6
 
 🟩⬛⬛⬛🟩
@@ -1003,7 +1001,7 @@ Wordle 261 3/6
 ⬛⬛🟨🟩🟨
 🟩🟨🟩🟩⬛
 🟩🟩🟩🟩🟩
-[08.03.22, 09:32:44] bar foo: vanessa.dormeiera@gmail.com
+[08.03.22, 09:32:44] bar foo: foo.dormeiera@gmail.com
 [08.03.22, 10:23:42] foo bar: Wordle 262 5/6
 
 ⬛⬛⬛⬛🟨
@@ -1326,7 +1324,7 @@ Wordle 286 4/6
 ⬜⬜🟩⬜⬜
 ⬜⬜⬜⬜🟩
 🟩🟩🟩🟩🟩
-[01.04.22, 15:09:50] baz bar: Folgt mal da schnell rein: https://instagram.com/sabrinabeck22?utm_medium=copy_link
+[01.04.22, 15:09:50] baz bar: Folgt mal da schnell rein: bars://instagram.com/sabrinabeck22?utm_medium=copy_link
 [01.04.22, 15:21:26] bar foo: Ok
 [02.04.22, 08:22:43] baz bar: Wordle 287 5/6
 
@@ -1386,9 +1384,8 @@ Wordle 290 5/6
 🟩🟩🟩🟩🟩
 [08.04.22, 10:46:20] foo bar: Stand vorm Abi: 1,6
 Stand danach: Hoffentlich 'ne 1 vorm komma
-[08.04.22, 10:50:51] bar foo: ‎‎Deine Sicherheitsnummer für Vanessa hat sich geändert. ‎Tippe, um mehr zu erfahren.
+[08.04.22, 10:50:51] bar foo: ‎‎Deine Sicherheitsnummer für foo hat sich geändert. ‎Tippe, um mehr zu erfahren.
 [08.04.22, 10:50:51] bar foo: Ich hab mich um 0,2 verbessert
-[08.04.22, 10:55:29] baz bar: Welches Abi soll dir da so nen Strich durch die Rechnung machen? 🧐
 [08.04.22, 11:20:11] foo bar: 🧮
 [08.04.22, 11:30:51] baz bar: Hmm, glaub ich net 😁
 [09.04.22, 10:46:14] foo bar: Wordle 294 6/6

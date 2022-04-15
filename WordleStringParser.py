@@ -3,10 +3,10 @@ This module holds the parsing functionality for
 parsing Wordle metadata from strings.
 '''
 from dataclasses import dataclass
-from tokenize import group
 from typing import Dict, List, Optional, Union
 import re
 
+from inputparser.MessageMetadata import Message
 from inputparser.MessageParserBase import MessageParserBase
 
 PLAYER_UNKNOWN: str = "unknown"
@@ -30,7 +30,14 @@ class WordleMetadata:
         return self.steps_to_solution == 'X'
 
 def parseFromSource(source: MessageParserBase) -> List[Optional[WordleMetadata]]:
-    return [wordle for msg in source.retrieve_snippets() if (wordle := parseMessage(msg)) is not None]
+    ret: List[WordleMetadata] = []
+    for msg in source.retrieve_snippets():
+        if msg is None:
+            continue
+        wordle = parseMessage(msg.message, msg.player)
+        if wordle is not None:
+            ret.append(wordle)
+    return ret
 
 def parseMessage(msg: str, playerName:str = PLAYER_UNKNOWN) -> Optional[WordleMetadata]:
     day_index = None
@@ -40,12 +47,10 @@ def parseMessage(msg: str, playerName:str = PLAYER_UNKNOWN) -> Optional[WordleMe
     match = REGEX_WORDLE_MSG.match(msg)
 
     if match is None:
-        print("Aborting because no match was found.")
         return None
 
     matchedGroups: Dict[str, str] = match.groupdict()
     for groupName in matchedGroups:
-        print("Found group:", groupName, matchedGroups[groupName])
         if REGEX_GROUP_DAYIDX == groupName:
             day_index = int(matchedGroups[REGEX_GROUP_DAYIDX])
         elif REGEX_GROUP_SOLLEN == groupName:
@@ -56,7 +61,6 @@ def parseMessage(msg: str, playerName:str = PLAYER_UNKNOWN) -> Optional[WordleMe
         elif REGEX_GROUP_SOL == groupName:
             solution = matchedGroups[REGEX_GROUP_SOL].strip()
     
-    print("Day Idx:", day_index, "Steps to Solution:", steps_to_solution)
     # Check if ALL values are NOT None anymore
     if not any(map(lambda x: x is None, (day_index, steps_to_solution, solution))):
         return WordleMetadata(

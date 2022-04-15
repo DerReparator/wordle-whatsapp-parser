@@ -1,3 +1,5 @@
+from datetime import date, time
+from inputparser.MessageMetadata import Message
 from inputparser.WhatsAppMessageParser import WhatsAppMessageParser
 import unittest
 import os
@@ -15,27 +17,20 @@ class Test_RetrieveSnippets_FindsAllMessages(unittest.TestCase):
 class Test_RetrieveSnippets_CorrectContent(unittest.TestCase):
     def test_RetrieveSnippets_CorrectMessageContent(self):
         parser = WhatsAppMessageParser(FILE_WITH_SINGLE_MESSAGE)
-        expected_res = ['baz bar: Kennst des TELNR ?']
+        expected_res = [Message(datestamp=date(2022, 1, 28), timestamp=time(10, 54, 4), player='baz bar', message='baz bar: Kennst des TELNR ?')]
         self.assertEqual(expected_res, list(parser.retrieve_snippets()))
 
     def test_RetrieveSnippets_CorrectMessageContent_Multiline(self):
         parser = WhatsAppMessageParser(FILE_WITH_SINGLE_MESSAGE_MULTILINE)
-        expected_res = ['''baz bar: Schon mal eins ohne Gelb gesehen? 😂
-
-Wordle 223 6/6
-
-⬛🟩🟩⬛⬛
-⬛🟩🟩⬛🟩
-⬛⬛⬛⬛⬛
-🟩⬛⬛⬛⬛
-🟩🟩🟩⬛🟩
-🟩🟩🟩🟩🟩''']
+        expected_res = [Message(datestamp=date(2022, 1, 28), timestamp=time(10, 53, 53), player='baz bar', message='baz bar: Schon mal eins ohne Gelb gesehen? 😂\n\nWordle 223 6/6\n\n⬛🟩🟩⬛⬛\n⬛🟩🟩⬛🟩\n⬛⬛⬛⬛⬛\n🟩⬛⬛⬛⬛\n🟩🟩🟩⬛🟩\n🟩🟩🟩🟩🟩')]
         self.assertEqual(expected_res, list(parser.retrieve_snippets()))
 
     def test_RetrieveSnippets_CorrectMessageContent_2Messages(self):
         parser = WhatsAppMessageParser(FILE_WITH_2_MESSAGES)
-        expected_res = ['''baz bar: Kennst des
- TELNR ?''', 'bar foo: Nö']
+        expected_res = [\
+            Message(datestamp=date(2022, 1, 28), timestamp=time(10, 54, 4), player='baz bar', message='baz bar: Kennst des\n TELNR ?'),
+            Message(datestamp=date(2022, 1, 28), timestamp=time(11, 0, 13), player='bar foo', message='bar foo: Nö')\
+            ]
         self.assertEqual(expected_res, list(parser.retrieve_snippets()))
 
 if __name__=='__main__':
