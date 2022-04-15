@@ -30,12 +30,12 @@ the data on your console when running this script.
 
 Todo List:
 
-[ ] Include information about the sending person in the WhatsApp chat parser
-[ ] Better utilize the gathered data? Implement a graphical way to display data
-[ ] The german Wordle website [wordle.at](https://wordle.at/) uses a slightly
+- [ ] Include information about the sending person in the WhatsApp chat parser
+- [ ] Better utilize the gathered data? Implement a graphical way to display data
+- [ ] The german Wordle website [wordle.at](https://wordle.at/) uses a slightly
 different format for its results which includes the current streak. Adapt the
 parser to also handle this extended information.
-[ ] Support other data sources for Wordle results.
+- [ ] Support other data sources for Wordle results.
 
 ## For developers
 
