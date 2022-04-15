@@ -39,11 +39,11 @@ the data on your console when running this script.
 
 Todo List:
 
-- [x] Include information about the sending person in the WhatsApp chat parser
+- [x] ~~Include information about the sending person in the WhatsApp chat parser~~
 - [ ] Better utilize the gathered data? Implement a graphical way to display data
-- [ ] The german Wordle website [wordle.at](https://wordle.at/) uses a slightly
+- [x] ~~The german Wordle website [wordle.at](https://wordle.at/) uses a slightly
 different format for its results which includes the current streak. Adapt the
-parser to also handle this extended information.
+parser to also handle this extended information.~~
 - [ ] Support other data sources for Wordle results.
 - [ ] Improve WhatsApp parsing support. Meta-messages (e.g. _You created group foobar_,
 _Your security number for baz has changed_, ...) yield error messages
