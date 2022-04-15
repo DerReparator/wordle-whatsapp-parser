@@ -10,7 +10,13 @@ import numpy as np
 class AverageScore(WordleOutput):
     '''Output that displays a diagram which shows the average number of tries
     for each player.'''
-    
+
+    def __convert_dict_keys_tolist_sample_size(self, theDict: Dict[str, int]) -> List[str]:
+        ret = []
+        for player in theDict.keys():
+            ret.append(f'{player} (N = {theDict[player]})')
+        return ret
+
     def output_results(self, playedWordles: List[WordleMetadata]) -> None:
         data: Dict[str, int] = defaultdict(lambda: 0)
         playerOccurenceCount: Dict[str, int] = defaultdict(lambda: 0)
@@ -27,8 +33,9 @@ class AverageScore(WordleOutput):
         for player in players:
             averages.append(float(data[player]) / playerOccurenceCount[player])
 
-        print("AverageScore Players:", players, end='\n')
-        print("AverageScore Averages:", averages, end='\n')
+        players = self.__convert_dict_keys_tolist_sample_size(playerOccurenceCount)
+        print("AverageScore Players:", players)
+        print("AverageScore Averages:", averages)
 
         fig, ax = plt.subplots()
         width = .7
