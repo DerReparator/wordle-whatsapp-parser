@@ -1,3 +1,4 @@
+from inputparser.MessageMetadata import WorldeGameSource
 import WordleStringParser
 from WordleStringParser import WordleMetadata
 import unittest
@@ -18,6 +19,8 @@ VALID_MESSAGE_SOLUTION: str = '''🟨⬜⬜⬜⬜
 🟨🟨⬜⬜⬜
 🟨⬜🟨🟩⬜
 🟩🟩🟩🟩🟩'''
+VALID_MESSAGE_WORDLEGAMETYPE: WorldeGameSource = WorldeGameSource.WORDLE
+
 
 VALID_MESSAGE_FAILED: str = '''[30.01.22, 10:42:56] bar foo: Wordle 225 X/6
 
@@ -73,6 +76,7 @@ WOERDL_MESSAGE_VALID_SOLUTION: str = '''⬛⬛⬛⬛⬛
 🟩🟩⬛🟩🟩
 🟩🟩🟩🟩🟩'''
 WOERDL_MESSAGE_VALID_STREAK: int = 1
+WOERDL_MESSAGE_VALID_WORDLEGAMETYPE: WorldeGameSource = WorldeGameSource.WOERDL
 
 class Test_ParseMessage_IsNone(unittest.TestCase):
     '''All cases where "None" should be returned.'''
@@ -157,6 +161,17 @@ class Test_ParseWoerdl_CorrectSolution(unittest.TestCase):
         ret: WordleMetadata = WordleStringParser.parseMessage(WOERDL_MESSAGE_VALID)
         self.assertIsNotNone(ret)
         self.assertEqual(WOERDL_MESSAGE_VALID_STREAK, ret.streak)
+
+class Test_ParseMessage_CorrectWordleGameType(unittest.TestCase):
+    def test_validMessage_WordleTypeDetected(self):
+        ret: WordleMetadata = WordleStringParser.parseMessage(VALID_MESSAGE)
+        self.assertIsNotNone(ret)
+        self.assertEqual(VALID_MESSAGE_WORDLEGAMETYPE, ret.wordleGame)
+
+    def test_validMessage_WoerdlTypeDetected(self):
+        ret: WordleMetadata = WordleStringParser.parseMessage(WOERDL_MESSAGE_VALID)
+        self.assertIsNotNone(ret)
+        self.assertEqual(WOERDL_MESSAGE_VALID_WORDLEGAMETYPE, ret.wordleGame)
 
 if __name__=='__main__':
     unittest.main()

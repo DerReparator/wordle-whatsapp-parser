@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from typing import Dict, List, Optional, Union
 import re
 
-from inputparser.MessageMetadata import Message
+from inputparser.MessageMetadata import Message, WorldeGameSource
 from inputparser.MessageParserBase import MessageParserBase
 
 PLAYER_UNKNOWN: str = "unknown"
@@ -27,6 +27,8 @@ class WordleMetadata:
     player: str
     solution: str
     streak: Optional[int] = None
+    wordleGame: WorldeGameSource = WorldeGameSource.UNKNOWN
+
 
     def is_failed_attempt(self) -> bool:
         return self.steps_to_solution == 'X'
@@ -73,12 +75,14 @@ def parseWordle(msg: str, playerName:str = PLAYER_UNKNOWN) -> Optional[WordleMet
     
     # Check if ALL values are NOT None anymore
     if not any(map(lambda x: x is None, (day_index, steps_to_solution, solution))):
-        return WordleMetadata(
+        parsedWordle: WordleMetadata = WordleMetadata(
             day_index=day_index,
             steps_to_solution=steps_to_solution,
             player=playerName,
             solution=solution,
         )
+        parsedWordle.wordleGame = WorldeGameSource.WORDLE
+        return parsedWordle
     else:
         return None
 
@@ -110,12 +114,14 @@ def parseWoerdl(msg: str, playerName:str = PLAYER_UNKNOWN) -> Optional[WordleMet
     
     # Check if ALL values are NOT None anymore
     if not any(map(lambda x: x is None, (day_index, steps_to_solution, solution, streak))):
-        return WordleMetadata(
+        parsedWordle: WordleMetadata =  WordleMetadata(
             day_index=day_index,
             steps_to_solution=steps_to_solution,
             player=playerName,
             solution=solution,
             streak=streak
         )
+        parsedWordle.wordleGame = WorldeGameSource.WOERDL
+        return parsedWordle
     else:
         return None

@@ -15,7 +15,7 @@ from typing import List
 
 from inputparser.WhatsAppMessageZipParser import WhatsAppMessageZipParser
 from WordleStringParser import parseFromSource
-from outputsinks.GraphicalOutputs import AverageScore
+from outputsinks.GraphicalOutputs import AverageScore, AverageScoreForEachWordleType
 from outputsinks.WordleOutputSink import WordleOutput
 
 ZIP_ARGUMENT_NAME: str = 'zipPathInput'
@@ -34,7 +34,8 @@ parser = argparse.ArgumentParser(description="This is the Wordle WhatsApp Parser
 parser.add_argument('--input', dest=ZIP_ARGUMENT_NAME, type=file_path, help='The WhatsApp Chat *.zip file')
 
 outputSinks: List[WordleOutput] = [
-    AverageScore()
+    AverageScore(),
+    AverageScoreForEachWordleType()
 ]
 
 if __name__=='__main__':
