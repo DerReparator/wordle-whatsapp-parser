@@ -26,6 +26,8 @@ class AverageScore(WordleOutput):
         for wordle in playedWordles:
             if not wordle.steps_to_solution == 'X':
                 data[wordle.player] = data[wordle.player] + wordle.steps_to_solution
+            else: # if the solution was not found; treat it as 6 points for the average calculation
+                data[wordle.player] = data[wordle.player] + 6 
             playerOccurenceCount[wordle.player] = playerOccurenceCount[wordle.player] + 1
         
         # Calculate averages for each player
@@ -64,10 +66,12 @@ class AverageScoreForEachWordleType(WordleOutput):
     def output_results(self, playedWordles: List[WordleMetadata]) -> None:
         data: Dict[Tuple[str, WorldeGameSource], int] = defaultdict(lambda: 0)
         playerOccurenceCount: Dict[Tuple[str, WorldeGameSource], int] = defaultdict(lambda: 0)
+        players = set()
 
         # Gather data
         for wordle in playedWordles:
             wordleId = (wordle.player, wordle.wordleGame)
+            players.add(wordle.player) # register player 
             if not wordle.steps_to_solution == 'X':
                 data[wordleId] = data[wordleId] + wordle.steps_to_solution
             playerOccurenceCount[wordleId] = playerOccurenceCount[wordleId] + 1
@@ -83,6 +87,9 @@ class AverageScoreForEachWordleType(WordleOutput):
 
         fig, ax = plt.subplots()
         bars = [] # Holds the diagram's bars
+
+        for i, player in enumerate(players):
+            pass
 
         rects1 = ax.bar(x - width/2, men_means, width, label='Men')
         rects2 = ax.bar(x + width/2, women_means, width, label='Women')

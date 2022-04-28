@@ -35,7 +35,7 @@ parser.add_argument('--input', dest=ZIP_ARGUMENT_NAME, type=file_path, help='The
 
 outputSinks: List[WordleOutput] = [
     AverageScore(),
-    AverageScoreForEachWordleType()
+   # AverageScoreForEachWordleType()
 ]
 
 if __name__=='__main__':
